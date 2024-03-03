@@ -30,14 +30,8 @@ const images = [
 
 const listWithClass = document.querySelector('.gallery');
 
-images.forEach(image => {
-  const listItem = document.createElement('li');
-  const imageElement = document.createElement('img');
-  
-  imageElement.src = image.url;
-  imageElement.alt = image.alt;
+let galleryMarkup = images.map(image => {
+  return `<li class="gallery-item"><img src="${image.url}" alt="${image.alt}" class="gallery-img"></li>`
+}).join('')
 
-  listItem.appendChild(imageElement);
-  listWithClass.appendChild(listItem);
-})
-
+listWithClass.insertAdjacentHTML('beforeend', galleryMarkup);
